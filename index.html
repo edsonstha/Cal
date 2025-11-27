@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation</title>
+    <style>
+        button{
+            font-size: 50px;
+            flex-wrap: wrap;
+            margin: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .number{
+            width: 40%;
+            flex-wrap: wrap;
+        }
+        #display{
+            font-size: 50px;
+            background-color: azure;
+            width: 100%;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="display"></div>
+    <div class="number">
+        <button
+        onclick="
+        receiveCal(1);
+        //Calculation= Calculation + 1;//concentanation
+        console.log(Calculation);
+        "> 1 </button>
+
+        <button  onclick="
+        receiveCal(2);
+       // Calculation= Calculation + 2;//concentanation
+        console.log(Calculation);
+        "> 2 </button>
+
+        <button  onclick="
+        receiveCal(3);
+       // Calculation= Calculation + 3;//concentanation
+        console.log(Calculation);
+        "> 3 </button>
+
+        <button  onclick="
+        receiveCal(4);
+       // Calculation= Calculation + 4;//concentanation
+        console.log(Calculation);
+        "> 4 </button>
+
+        <button  onclick="
+        receiveCal(5);
+       // Calculation= Calculation + 5;//concentanation
+        console.log(Calculation);
+        "> 5 </button>
+        
+        <button  onclick="
+        receiveCal(6);
+       // Calculation= Calculation + 4;//concentanation
+        console.log(Calculation);
+        "> 6 </button>
+
+        <button  onclick="
+        receiveCal(7);
+       // Calculation= Calculation + 4;//concentanation
+        console.log(Calculation);
+        "> 7 </button>
+
+        <button  onclick="
+        receiveCal(8);
+       // Calculation= Calculation + 4;//concentanation
+        console.log(Calculation);
+        "> 8 </button>
+        
+        <button  onclick="
+        receiveCal(9);
+       // Calculation= Calculation + 4;//concentanation
+        console.log(Calculation);
+        "> 9 </button>
+        
+        <button  onclick="
+        receiveCal(0);
+       // Calculation= Calculation + 4;//concentanation
+        console.log(Calculation);
+        "> 0 </button>
+
+    <button  onclick="
+    receiveCal('+');
+    //Calculation= Calculation + '+';//concentanation
+    console.log(Calculation);
+    "> + </button>
+
+    <button  onclick="
+    let cal=eval(Calculation);
+    console.log(cal);
+    // alert(`${cal}`);
+    document.getElementById('display').innerHTML = cal;
+    "> = </button>
+    </div>
+
+
+    <button onclick="
+    Calculation = '';
+    // alert('Reset: ');
+    document.getElementById('display').innerHTML = '';
+    " style="
+        margin-left: 30px;
+    "> Reset </button>
+</body>
+<script>
+    let Calculation ='';
+    function receiveCal (value){
+        Calculation = Calculation +value;
+        document.getElementById('display').innerText = Calculation;
+    }
+</script>
+</html>

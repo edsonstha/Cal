@@ -5,129 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculation</title>
     <style>
-        button{
-            font-size: 50px;
-            flex-wrap: wrap;
-            margin: 10px;
-            padding-left: 20px;
-            padding-right: 20px;
+        /* Base styles for mobile-friendly centering */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px 10px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Keeping a light page background */
         }
-        .number{
-            width: 50%;
-            flex-wrap: wrap;
-        }
-        #display{
+
+        /* Display Area: Original color and size preserved */
+        #display {
             font-size: 50px;
-            background-color: azure;
-            width: 100%;
+            background-color: azure; /* Original background-color */
+            width: 90%; 
+            max-width: 400px;
             height: 100px;
+            margin-bottom: 10px;
+            text-align: right; 
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc; /* Added a subtle border for definition */
+            overflow-x: auto;
+        }
+        
+        /* Main Button Grid: Organized for 4 columns on mobile */
+        .calculator-grid { 
+            display: flex;
+            flex-wrap: wrap; 
+            width: 90%;
+            max-width: 400px;
+            gap: 10px; /* Spacing between buttons */
+        }
+
+        /* Individual Button Styling: Preserving original font size and padding logic */
+        button {
+            font-size: 50px; /* Original font-size */
+            margin: 0; /* Handled by container gap */
+            
+            /* Calculate width for 4 columns: (100% - 3*gap) / 4 */
+            width: calc(25% - 7.5px); 
+            height: 80px; /* Set a fixed height for square/even buttons */
+            
+            /* Preserving original padding logic, adjusted to fit the calculated width */
+            padding-left: 0; 
+            padding-right: 0; 
+            
+            box-sizing: border-box;
+            border: 1px solid #aaa; /* Default button border */
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        /* Reset Button Container: To make it full-width */
+        .reset-container {
+            width: 90%;
+            max-width: 400px;
+            margin-top: 10px;
+        }
+
+        /* Reset Button: Full width with original left margin removed */
+        .reset-container button {
+            width: 100%;
+            margin-left: 0; /* Removed original margin-left: 30px */
+            background-color: #f0f0f0; /* Default color */
+            border: 1px solid #ccc;
+            padding: 15px 0;
+            height: auto;
         }
     </style>
 </head>
 <body>
     <div id="display"></div>
-    <div class="number">
-        <button
-        onclick="
-        receiveCal(1);
-        //Calculation= Calculation + 1;//concentanation
-        console.log(Calculation);
-        "> 1 </button>
-
-        <button  onclick="
-        receiveCal(2);
-       // Calculation= Calculation + 2;//concentanation
-        console.log(Calculation);
-        "> 2 </button>
-
-        <button  onclick="
-        receiveCal(3);
-       // Calculation= Calculation + 3;//concentanation
-        console.log(Calculation);
-        "> 3 </button>
-
-        <button  onclick="
-        receiveCal(4);
-       // Calculation= Calculation + 4;//concentanation
-        console.log(Calculation);
-        "> 4 </button>
-
-        <button  onclick="
-        receiveCal(5);
-       // Calculation= Calculation + 5;//concentanation
-        console.log(Calculation);
-        "> 5 </button>
+    
+    <div class="calculator-grid"> 
+        <button onclick="receiveCal(1);"> 1 </button>
+        <button onclick="receiveCal(2);"> 2 </button>
+        <button onclick="receiveCal(3);"> 3 </button>
+        <button onclick="receiveCal(4);"> 4 </button>
         
-        <button  onclick="
-        receiveCal(6);
-       // Calculation= Calculation + 4;//concentanation
-        console.log(Calculation);
-        "> 6 </button>
-
-        <button  onclick="
-        receiveCal(7);
-       // Calculation= Calculation + 4;//concentanation
-        console.log(Calculation);
-        "> 7 </button>
-
-        <button  onclick="
-        receiveCal(8);
-       // Calculation= Calculation + 4;//concentanation
-        console.log(Calculation);
-        "> 8 </button>
+        <button onclick="receiveCal(5);"> 5 </button>
+        <button onclick="receiveCal(6);"> 6 </button>
+        <button onclick="receiveCal(7);"> 7 </button>
+        <button onclick="receiveCal(8);"> 8 </button>
         
-        <button  onclick="
-        receiveCal(9);
-       // Calculation= Calculation + 4;//concentanation
-        console.log(Calculation);
-        "> 9 </button>
+        <button onclick="receiveCal(9);"> 9 </button>
+        <button onclick="receiveCal(0);"> 0 </button>
+        <button onclick="receiveCal('+');"> + </button>
+        <button onclick="receiveCal('-');"> - </button>
         
-        <button  onclick="
-        receiveCal(0);
-       // Calculation= Calculation + 4;//concentanation
-        console.log(Calculation);
-        "> 0 </button>
+        <button onclick="receiveCal('*');"> * </button>
+        <button onclick="receiveCal('/');"> / </button>
 
-    <button  onclick="
-    receiveCal('+');
-    //Calculation= Calculation + '+';//concentanation
-    console.log(Calculation);
-    "> + </button>
-
-    <button  onclick="
-    receiveCal('-');
-    //Calculation= Calculation + '+';//concentanation
-    console.log(Calculation);
-    "> - </button>
-
-<button  onclick="
-    receiveCal('*');
-    //Calculation= Calculation + '+';//concentanation
-    console.log(Calculation);
-    "> * </button>
-    <button  onclick="
-    receiveCal('/');
-    //Calculation= Calculation + '+';//concentanation
-    console.log(Calculation);
-    "> / </button>
-
-
-    <button  onclick="
-    let cal=eval(Calculation);
-    console.log(cal);
-    // alert(`${cal}`);
-    document.getElementById('display').innerHTML = cal;
-    "> = </button>
+        <button style="width: calc(50% - 5px);" onclick=" /* Made = button wider */
+            let cal=eval(Calculation);
+            console.log(cal);
+            document.getElementById('display').innerHTML = cal;
+        "> = </button>
     </div>
 
 
-    <button onclick="
-    Calculation = '';
-    // alert('Reset: ');
-    document.getElementById('display').innerHTML = '';
-    " style="
-        margin-left: 30px;
-    "> Reset </button>
+    <div class="reset-container">
+        <button onclick="
+        Calculation = '';
+        document.getElementById('display').innerHTML = '';
+        "> Reset </button>
+    </div>
 </body>
 <script>
     let Calculation ='';
